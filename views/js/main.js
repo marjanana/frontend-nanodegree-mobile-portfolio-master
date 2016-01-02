@@ -423,6 +423,14 @@ var resizePizzas = function(size) {
 
 
 
+  // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
+  function determineDx (elem, size) {
+    var oldWidth = elem.offsetWidth;
+    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+    var oldSize = oldWidth / windowWidth;
+
+
+
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
     for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
@@ -433,6 +441,14 @@ var resizePizzas = function(size) {
   }
 
   changePizzaSizes(size);
+
+
+
+
+
+
+
+
 
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");
@@ -461,12 +477,12 @@ var frame = 0;
 
 // Logs the average amount of time per 10 frames needed to move the sliding background pizzas on scroll.
 function logAverageFrame(times) {   // times is the array of User Timing measurements from updatePositions()
-  var numberOfEntries = times.length;
-  var sum = 0;
-  for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
-    sum = sum + times[i].duration;
-  }
-  console.log("Average time to generate last 10 frames: " + sum / 10 + "ms");
+    var numberOfEntries = times.length;
+    var sum = 0;
+    for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
+        sum = sum + times[i].duration;
+    }
+    console.log("Average time to generate last 10 frames: " + sum / 10 + "ms");
 }
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
@@ -474,14 +490,21 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
-  frame++;
-  window.performance.mark("mark_start_frame");
+    frame++;
+    window.performance.mark("mark_start_frame");
+    var items = document.getElementsByClassName('mover');
 
-  var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  }
+    var scrollpix = (document.body.scrollTop / 1250);
+
+    var phase = [];
+
+    for (var i=0; i<5 ; i++) {
+        phase.push(Math.sin(scrollpix + i ) * 100);
+    }
+
+    for (i=0; i<items.length; i++) {
+        items[i].style.left = items[i].basicLeft + phase[i%5] + 'px';
+    }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
