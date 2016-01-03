@@ -15,8 +15,8 @@
 1. Replaced querySelectorAll with getElementsByClassName.
 2. Optimized function changePizzaSizes(size) by claiming var newSize and var randomPizzaContainer outside the for loop and by replacing px with %.
 3. Erased function determineDx (elem, size).
-4. Replaced items[i].style.left = items[i].basicLeft  with items[i].style.transform = 'translateX in function updatePositions() and separated scroll event from changes affecting style change to avoid the forced synchronous layout.
-5. Replaced querySelector with getElementById in document.addEventListener('DOMContentLoaded', function() and lowered the number of generated pizzas.
+4. Replaced ```bash items[i].style.left = items[i].basicLeft```  with ```bashitems[i].style.transform = 'translateX``` in function updatePositions() and separated scroll event from changes affecting style change to avoid the forced synchronous layout.
+5. Replaced ```bashquery Selector with getElementById``` in ```bashdocument.addEventListener('DOMContentLoaded', function()``` and lowered the number of generated pizzas.
 
 
 
