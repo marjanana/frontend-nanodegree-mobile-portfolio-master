@@ -1,0 +1,22 @@
+{
+  "name": "frontend-nanodegree-mobile-portfolio-master",
+  "version": "1.0.0",
+  "description": "Udacity P4",
+  "main": "Index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marjanana/frontend-nanodegree-mobile-portfolio-master.git"
+  },
+  "author": "Ana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marjanana/frontend-nanodegree-mobile-portfolio-master/issues"
+  },
+  "homepage": "https://github.com/marjanana/frontend-nanodegree-mobile-portfolio-master#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-uglify": "^0.11.0"
+  }
+}

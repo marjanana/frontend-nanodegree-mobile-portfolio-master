@@ -1,5 +1,11 @@
 ## Website Performance Optimization portfolio project by Ana
 
+
+## Instructions
+
+Navigate through the repository and run ```index.html.```
+
+
 ## Changes - index.html, project-2048.html, project-mobile.html, project-webperf.html
 
 1. Inlined minified CSS
@@ -15,8 +21,11 @@
 1. Replaced ```querySelectorAll``` with ```getElementsByClassName.```
 2. Optimized ```function changePizzaSizes(size)``` by claiming ```var newSize``` and var ```randomPizzaContainer``` outside the for loop and by replacing px with %.
 3. Erased ```function determineDx (elem, size)```.
-4. Replaced ```items[i].style.left = items[i].basicLeft```  with ```items[i].style.transform = 'translateX``` in function updatePositions() and separated scroll event from changes affecting style change to avoid the forced synchronous layout.
-5. Replaced ```querySelector with getElementById``` in ```document.addEventListener('DOMContentLoaded', function()``` and lowered the number of generated pizzas.
+4. In function ```updatePositions()```, ```var phase = []``` was created outside the for loop to avoid unnecessary iterations caused by (i%5). In the same function, the line ```items[i].style.left = items[i].basicLeft + phase[i%5] + 'px';```  was causing a lot of painting. ```backface-visibility: hidden;``` and   ```-webkit-backface-visibility: hidden;``` were applied to .mover css class to put the element to its own layer, which reduced painting.
+5. Replaced ```querySelector with getElementById``` in ```document.addEventListener('DOMContentLoaded', function()```.
+6. Applied ```innerHeight``` property to calculate the inner width of the window’s content area and calculated the number of pizzas in relation to the window resolution using the ```row * cols```, both outside the for loop.
+7. Moved ```document.getElementById("movingPizzas1")``` in a variable outside the for loop to minimize manipulating the DOM.
+
 
 
 
