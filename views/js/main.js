@@ -519,7 +519,7 @@ function updatePositions() {
 
     var items = document.getElementsByClassName('mover');
     var scrollpix = (document.body.scrollTop / 1250);
-
+    //avoid unnecessary iterations caused by (i%5)
     var phase = [];
     for (var i = 0; i < 5 ; i++) {
         phase.push(Math.sin(scrollpix + i ) * 100);
@@ -548,9 +548,11 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
     var cols = 8;
     var s = 256;
+    //Use innerHeight property to dynamically calculate the number of pizzas depending on window resolution
     var row = Math.floor(window.innerHeight / 200);
     var pizzaN = row * cols;
     var elem;
+    //place the document object outside the loop
     var movingPizzas = document.getElementById("movingPizzas1");
     for (var i = 0; i < pizzaN; i++) {
         var elem = document.createElement('img');
